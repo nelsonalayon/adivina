@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Numero secreto</title>
+
+	<style>	
+
+		.botonOff {
+			display: none; 
+		}
+	</style>
+</head>
+<body>
+	<button  id="volverAEmpezar" onclick="intentarNuevamente()">empezar a jugar</button>
+	<button  id="intentar" class="botonOff" onclick="intentarNuevamente()">intente nuevamente</button>
+	<button class = "botonOff" id="empezar">volver a jugar</button>
+
+	<script>
+
+		let botonIntentar = document.getElementById("intentar")
+		let botonEmpezar = document.getElementById("empezar")
+		let botonEmpezarNuevamente = document.getElementById("volverAEmpezar")
+		
+		let numeroMaximo = 100
+
+		let numeroMinimo = 0	
+		let intentos = 1;
+
+		let numeroComputador = Math.round(Math.random() * (numeroMaximo - numeroMinimo) + numeroMinimo);
+		
+
+		function intentarNuevamente() {
+			let numeroUsuario = prompt("adivina un numero de 1 a 100")
+			temperatura(numeroUsuario)
+			intentos++
+			addElement(`Numero malo ${numeroUsuario}`)
+			addElement(`Intento ${intentos}`)
+
+			botonIntentar.classList.remove("botonOff");
+			botonEmpezarNuevamente.classList.add("botonOff")
+
+			}
+
+		function addElement (message) { 
+				  // crea un nuevo div 
+				  // y añade contenido 
+				  var newDiv = document.createElement("div"); 
+				  var newContent = document.createTextNode(message); 
+				  newDiv.appendChild(newContent); //añade texto al div creado. 
+
+				  // añade el elemento creado y su contenido al DOM 
+				  var currentDiv = document.getElementById("div1"); 
+				  document.body.insertBefore(newDiv, currentDiv); 
+		}
+
+
+		let temperatura = (num) => {
+
+			if ( num <= (numeroComputador - 20) || num >= (numeroComputador + 20)) {
+				addElement (`helado`)
+			} else if ( num <= (numeroComputador - 15) || num >= (numeroComputador + 15)) {
+				addElement (`frio`)
+			} else if ( num <= (numeroComputador - 10) || num >= (numeroComputador + 10)) {
+				addElement(`tibio`)
+			} else if ( num <= (numeroComputador - 5) || num >= (numeroComputador + 5)) {
+				addElement(`caliente`)
+			} else if ( num <= (numeroComputador - 1) || num >= (numeroComputador + 1)) {
+				addElement(`hirviendo `)  
+			} else{
+				addElement(`guau, le pegaste, el numero es ${numeroComputador} y le pegaste a los ${intentos} intentos`)
+			}
+			
+		}
+
+		// if ( num < (numeroComputador - 20) || num > (numeroComputador + 20)) {
+		// 		addElement (`helado`)
+		// 	} else if ( num < (numeroComputador - 15) || num > (numeroComputador + 15)) {
+		// 		addElement (`frio`)
+		// 	} else if ( num < (numeroComputador - 10) || num > (numeroComputador + 10)) {
+		// 		addElement(`tibio`)
+		// 	} else if ( num < (numeroComputador - 5) || num > (numeroComputador + 5)) {
+		// 		addElement(`caliente`)
+		// 	} else if ( num < (numeroComputador - 1) || num > (numeroComputador + 1)) {
+		// 		addElement(`hirviendo`)
+		// 	} else{
+		// 		addElement(`guau, le pegaste, el numero es ${numeroComputador} y le pegaste a los ${intentos} intentos`)
+		// 	}
+
+		// switch (num) {
+		//   case (num < (numeroComputador - 20) || num > (numeroComputador + 20)):
+		//    addElement (`helado`)
+		//     break;
+		//   case ( num < (numeroComputador - 15) || num > (numeroComputador + 15)):
+		//     addElement (`frio`)
+		//     break;
+		  
+		//   case ( num < (numeroComputador - 10) || num > (numeroComputador + 10)):
+		//     addElement(`tibio`)
+		//     break;
+
+		//     case ( num < (numeroComputador - 5) || num > (numeroComputador + 5)):
+		//     addElement(`caliente`)
+		//     break;
+
+		//     case ( num < (numeroComputador - 1) || num > (numeroComputador + 1)):
+		//     addElement(`hirviendo`)
+		//     break;
+
+		//   default:
+		//     addElement(`guau, le pegaste, el numero es ${numeroComputador} y le pegaste a los ${intentos} intentos`)
+		//     break;
+		// }
+
+		
+
+		// function between(x, min, max) { return x >= min && x <= max; } // ... if (between(x, 0.001, 0.009)) { // something }
+
+			// function esfuerzo(num) {
+			// 	while (num !== numeroComputador) {
+			// 	  let intentos = 0;
+			// 	  num = prompt("adivina un numero de 1 a 100")
+			// 		temperatura(num)
+			// 	  intentos ++;
+			// 	  addElement (intentos)
+
+			// 	}
+			
+			// }
+				
+
+				// temperatura(numeroUsuario)
+
+				
+
+
+
+		// let mirarSiAcerto = (num) => {
+		// 	if(num === numeroComputador) {
+		// 		addElement("hola, que ase")
+		// 	}
+		// 	else{
+		// 		addElement("ni por el chiras")
+		// 		addElement(`El numero era ${numeroComputador}`)
+
+		// 	}
+		// }
+
+		
+ 		
+	</script>
+	
+</body>
+</html>
